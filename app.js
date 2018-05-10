@@ -1,16 +1,12 @@
+var mysql = require('mysql');
 
-var mysql = require("mysql");
-//Database connection
-app.use(function(req, res, next){
-    res.locals.connection = mysql.createConnection({
-        host     : 'localhost',
-        user     : 'root',
-        password : ' ',
-        database : 'test'
-    });
-    res.locals.connect();
-    next();
+var con = mysql.createConnection({
+  host: "http://206.189.40.50",
+  user: "root",
+  password: "changeme"
 });
 
-app.use('/', index);
-app.use('/api/v1/users', users);
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
